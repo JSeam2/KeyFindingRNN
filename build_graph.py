@@ -32,7 +32,7 @@ def build_lstm_graph_with_config(config=None):
 
 		val, _ = tf.nn.dynamic_rnn(cell, inputs, dtype=tf.float32, scope="rnn")
 
-		with tf.name_scope("output_layer"):
+		with tf.name_scope("output_layer"):	
 			last = tf.gather(val, val.get_shape()[0] - 1, name="last_lstm_output")
 			weight = tf.Variable(tf.truncated_normal([config.lstm_size, config.input_size]), name="weights")
 			bias = tf.Variable(tf.constant(0.1, shape=[config.input_size]), name="biases")
